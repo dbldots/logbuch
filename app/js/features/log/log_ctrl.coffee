@@ -30,6 +30,6 @@ angular.module("logbuch").controller "LogCtrl", ($scope, $stateParams, $ionicPop
     #$ionicPopup.alert(title: "show #{log.id}")
     
   $scope.export = ->
-    new LogExport().run()
+    LogExport.run()
 
   query()
