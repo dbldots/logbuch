@@ -1,0 +1,29 @@
+{
+  "name": "logbuch",
+  "homepage": "https://github.com/dbldots/logbuch",
+  "authors": [
+    "Jacek Tomaszewski <jacek@jtom.me>",
+    "driftyco",
+    "Johannes-Kostas Götzinger <dbldots@gmail.com>"
+  ],
+  "description": "Log book to record sailing tracks and happenings. Scores points according to German Brandenburgischer Segler e.V. competition regulations.",
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+    "ionic": "v1.0.0",
+    "angulartics": "~0.17.2",
+    "moment": "~2.10.3",
+    "lodash": "~3.9.3",
+    "ngCordova": "~0.1.17-alpha"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.3.13"
+  },
+  "resolutions": {
+    "angular": "1.3.13"
+  }
+}

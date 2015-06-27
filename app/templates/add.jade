@@ -1,0 +1,45 @@
+html
+  body
+    ion-view(view-title='Ereignis hinzufügen')
+      ion-content(has-header='true', padding='true')
+        div.list.card
+          a.item.item-icon-right(href='#/tab/add/track')
+            span Strecke manuell eintragen
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/mast')
+            span Mast gelegt
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/lock')
+            span Schleuse passiert
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/trailer')
+            span Trailertransport
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/distance')
+            span Langtörn &gt; 200 km
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/distance_plus')
+            span Langtörn + 100 km
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/club_trip')
+            span Gemeinschaftsfahrt
+            i.icon.ion-chevron-right
+          a.item.item-icon-right(href='#/tab/add/regatta')
+            span Regatta Funktion
+            i.icon.ion-chevron-right
+
+//-html
+  //-body
+    //-//
+        //-This template loads for the 'tab.adopt' state (app.js)
+    //-ion-view(view-title='Adopt A Pet')
+      //-ion-content(has-header='true', has-tabs='true')
+        //-.list.list-inset
+          //-label.item.item-input
+            //-span.input-label Your name
+            //-input(type='text')
+          //-label.item.item-input
+            //-span.input-label Your email
+            //-input(type='email')
+          //-ion-toggle Subscribe To Newsletter
+          //-button.button.button-positive.button-block Adopt

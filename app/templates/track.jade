@@ -1,0 +1,37 @@
+html
+  body
+    ion-view(view-title='Strecke aufzeichnen', cache-view='false')
+      ion-content.track(has-header='true', has-tabs='true')
+        div(ng-if="view == 'track'")
+          div.row.box
+            div.col.col-50.col-offset-25
+              div.line.coord {{ track.lat | dms_lat3 }}
+              div.line.coord {{ track.long | dms_long3 }}
+              div.line.distance {{ track.distanceKm | float2 }} km / {{ track.distanceNm | float2 }} nm
+              div.buttons
+                div.line
+                  button.button.button-balanced(ng-hide="track", ng-click='start()') Start
+                  button.button.button-positive(ng-show="track", ng-click='stop()') Stop
+                div.line
+                  button.button.button-stable(ng-click='waypoint()', ng-class='{disabled: !isTracking()}') Wegpunkt
+
+        div(ng-if="view == 'save'")
+          div.list
+            div.item.item-divider Datum, Punkte
+            label.item.item-stacked-label
+              div {{ log.start.timestamp | datetime }} - {{ log.destination.timestamp | datetime }}
+              span.badge.badge-energized {{ log.points }}
+
+            div.item.item-divider Eingaben
+            ion-radio(ng-model='log.type', value='inland') Binnen
+            ion-radio(ng-model='log.type', value='sea') See
+            ion-toggle(ng-model='log.engine') Motor
+            ion-toggle(ng-model='log.current') Strömung
+            ion-toggle(ng-model='log.family') Familie mit Kindern
+
+            label.item.item-input.item-stacked-label
+              span.input-label Notiz
+              input(type='text', ng-model='log.comment', placeholder='Notiz hier eingeben')
+
+            button.button.button-full.button-positive(ng-click='save()') Speichern
+            button.button.button-full.button(ng-click='cancel()') Abbrechen

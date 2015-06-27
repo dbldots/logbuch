@@ -1,0 +1,21 @@
+html
+  body
+    ion-view(view-title='Gemeinschaftsfahrt', cache-view="false")
+      ion-content.add(has-header='true', padding='true')
+        div.card
+          div.item.item-text-wrap.item-icon-right.stable-bg
+            | Teilnahme an den von den Vereinen organisierten Gemeinschaftsfahrten zusätzlich zu den Segelpunkten (Mindestteilnahme 5 Boote)
+            i.icon.ion-information-circled.positive
+
+        div.list
+          div.item.item-divider Datum, Punkte
+          label.item.item-stacked-label
+            div {{ empty | datetime }}
+            span.badge.badge-energized 20
+
+          div.item.item-divider Eingaben
+          label.item.item-input.item-stacked-label
+            span.input-label Notiz
+            input(type='text', ng-model='log.comment', placeholder='Notiz hier eingeben')
+
+          button.button.button-full.button-positive(ng-click='save()') Speichern

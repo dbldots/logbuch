@@ -1,0 +1,45 @@
+html
+  body
+    ion-view(view-title='Log', cache-view="false")
+      ion-content.log(has-header='true', has-tabs='true')
+        ion-list
+          ion-item(ng-repeat='log in logs', on-touch='touch(log)', on-release='release(log)', on-tap='show(log)')
+            div(ng-if='log.isTrack()')
+              div.row.dates
+                table
+                  tr
+                    td
+                      span.date {{ log.start.timestamp | datetime }}
+                    td
+                      span.coord {{ log.start.lat | dms_lat0 }} {{ log.start.long | dms_long0 }}
+                  tr
+                    td
+                      span.date {{ log.destination.timestamp | datetime }}
+                    td
+                      span.coord {{ log.destination.lat | dms_lat0 }} {{ log.destination.long | dms_long0 }}
+
+              div.row.qualities
+                div.types
+                  log-badge(log='log')
+                div.numbers
+                  span.distance {{ log.distance_km | float2 }} km
+                  span.points.badge.badge-energized {{ log.points }}
+
+              div.row.comment.dark {{ log.comment }}
+
+            div(ng-if='!log.isTrack()')
+              div.row.dates
+                span.date {{ log.start.timestamp | datetime }}
+                span.coord {{ log.start.lat | dms_lat0 }} {{ log.start.long | dms_long0 }}
+
+              div.row.qualities
+                div.types
+                  log-badge(log='log')
+                div.numbers
+                  span.points.badge.badge-energized {{ log.points }}
+
+              div.row.comment.dark(ng-if='log.comment') {{ log.comment }}
+
+        div.total
+          div.description.dark Total:
+          div.points.badge.badge-dark {{ total }}

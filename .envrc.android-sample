@@ -1,0 +1,6 @@
+# Copy this file as '.envrc' and fill in the variables.
+
+export ANDROID_KEYSTORE_NAME="logbuch"
+export ANDROID_KEYSTORE_PASSWORD="123"
+export ANDROID_ALIAS_NAME="logbuch"
+export ANDROID_ALIAS_PASSWORD="456"

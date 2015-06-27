@@ -1,0 +1,31 @@
+html
+  body
+    ion-view(view-title='Fahrt', cache-view="false")
+      ion-content.add(has-header='true', padding='true')
+        div.card
+          div.item.item-text-wrap.item-icon-right.stable-bg
+            | Für Infos siehe Fahrtensegler Regeln
+            i.icon.ion-information-circled.positive
+
+        div.list
+          div.item.item-divider Datum, Punkte
+          label.item.item-stacked-label
+            div {{ empty | datetime }}
+            span.badge.badge-energized {{ log.points }}
+
+          div.item.item-divider Eingaben
+          label.item.item-input.item-stacked-label
+            span.input-label Gefahrene Strecke über Grund (km / nm)
+            input(type='number', ng-model='log.distance', placeholder='Distanz')
+
+          ion-radio(ng-model='log.type', value='inland') Binnen
+          ion-radio(ng-model='log.type', value='sea') See
+          ion-toggle(ng-model='log.engine') Motor
+          ion-toggle(ng-model='log.current') Strömung
+          ion-toggle(ng-model='log.family') Familie mit Kindern
+
+          label.item.item-input.item-stacked-label
+            span.input-label Notiz
+            input(type='text', ng-model='log.comment', placeholder='Notiz hier eingeben')
+
+          button.button.button-full.button-positive(ng-click='save()') Speichern

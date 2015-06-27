@@ -1,0 +1,11 @@
+html
+  body
+    ion-view(view-title='Logbuch Debug', cache-view="false")
+      ion-nav-buttons(side='left')
+        a.button.button-icon.icon.ion-home(ui-sref='tab.track')
+
+      ion-content(has-header='true', padding='true')
+        ion-list
+          ion-item.wrap(ng-repeat="debug_log in debug_logs")
+            p Zeit: {{ debug_log.timestamp | datetime }}
+            p Msg: {{ debug_log.msg }}

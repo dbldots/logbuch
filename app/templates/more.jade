@@ -1,0 +1,22 @@
+html
+  body
+    ion-view(view-title='Logbuch')
+      ion-nav-buttons(side='left')
+        a.button.button-icon.icon.ion-home(ui-sref='tab.track')
+
+      ion-content(has-header='true', padding='true')
+        div.card
+          div.item.item-text-wrap.stable-bg
+            h2 Logbuch v0.0.1
+            p Copyright Johannes-Kostas Götzinger
+
+        div.list.card
+          a.item.item-icon-right(onclick="window.open('http://segel-vbs.de/content/378/66/ausschreibung-fahrtensegeln', '_system', 'location=yes')")
+            span Fahrtensegler Regeln
+            i.icon.ion-chevron-right
+
+        div.list.card
+          a.item.assertive(ng-click="resetDB()")
+            span Log löschen
+          a.item.assertive(ui-sref='debug')
+            span Debug
