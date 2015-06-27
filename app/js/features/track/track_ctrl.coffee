@@ -19,6 +19,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
   $scope.start = ->
     success = (position) ->
       $scope.track = Track.fromPosition(position.coords.latitude, position.coords.longitude)
+      Track.toStorage($scope.track)
       ToastrService.hide()
       LocationService.watchPosition()
 
