@@ -1,10 +1,9 @@
-angular.module("logbuch")
-
-.controller "LogCtrl", ($scope, $stateParams, $ionicPopup, $timeout, Log, ToastrService) ->
+angular.module("logbuch").controller "LogCtrl", ($scope, $stateParams, $ionicPopup, $timeout, Log, LogExport, ToastrService) ->
   query = ->
     Log.all('id DESC').then (logs) ->
       $scope.logs = logs
-      $scope.total = _.sum logs, 'points'
+      $scope.total = 0
+      angular.forEach logs, (log) -> $scope.total += log.points
 
   # touch + released is a workaround since on-hold does not work with android
   released = null
@@ -29,5 +28,8 @@ angular.module("logbuch")
 
   $scope.show = (log) ->
     #$ionicPopup.alert(title: "show #{log.id}")
+    
+  $scope.export = ->
+    new LogExport().run()
 
   query()

@@ -29,9 +29,11 @@ install_plugin "android ios" cordova-plugin-inappbrowser || exit $?
 # install_plugin "android ios" cordova-plugin-network-information || exit $?
 install_plugin "android ios" cordova-plugin-splashscreen || exit $?
 install_plugin "android ios" cordova-plugin-whitelist || exit $?
+install_plugin "android ios" cordova-plugin-file || exit $?
 
 # install_plugin "android ios" https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git || exit $?
 install_plugin "android ios" https://github.com/litehelpers/Cordova-sqlite-storage.git || exit $?
+install_plugin "android ios" https://github.com/pwlin/cordova-plugin-file-opener2.git || exit $?
 
 # Created by authors of Ionic, fixes keyboard issues on iOS
 install_plugin "android ios" vendor/plugins/ionic-plugins-keyboard || exit $?

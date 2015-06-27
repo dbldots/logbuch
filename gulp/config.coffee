@@ -182,6 +182,8 @@ module.exports = new class GulpConfig
           "assets/components/moment/locale/de.js"
           "assets/components/lodash/lodash.js"
           "assets/components/ngCordova/dist/ng-cordova.js"
+          "assets/components/pdfmake/build/pdfmake.js"
+          "assets/components/pdfmake/build/vfs_fonts.js"
         ]
         app: [
           'app/js/config/**/*.coffee' # initialize & configure the angular's app
