@@ -31,7 +31,7 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
       @getPosition().then success, error
 
     @watching = true
-    watch()
+    $timeout watch, 10000
 
   clearWatch: (watcher) ->
     @watching = false

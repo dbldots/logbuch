@@ -1,12 +1,10 @@
 angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate, $rootScope, $timeout, $log, ToastrService, StorageService, Log, DebugLog, Track, LocationService) ->
   $scope.view = StorageService.get('currentTrackView', 'track')
 
-  $scope.isTracking = -> !_.isEmpty($scope.track)
-
   $rootScope.$$listeners['locationChange'] = [] # unregister existing listeners
   $rootScope.$on 'locationChange', (event, position) ->
     $log.info 'got position update', position, moment().toISOString()
-    return $scope.isTracking()
+    return unless $scope.track
 
     new DebugLog("updating position. lat: #{position.coords.latitude} long: #{position.coords.longitude}").save()
     $scope.track.updateCurrentPosition(position.coords.latitude, position.coords.longitude)
@@ -14,7 +12,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
 
   if $scope.view == 'track'
     $scope.track = Track.fromStorage()
-    LocationService.watchPosition() if $scope.isTracking()
+    LocationService.watchPosition() if $scope.track
 
   $scope.start = ->
     success = (position) ->

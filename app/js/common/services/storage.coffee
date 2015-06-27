@@ -11,4 +11,8 @@ angular.module("logbuch")
     $window.localStorage[key] = JSON.stringify(value)
 
   getObject: (key) ->
-    JSON.parse($window.localStorage[key] || '{}')
+    value = $window.localStorage[key]
+    value && JSON.parse(value)
+
+  clear: (key) ->
+    $window.localStorage.removeItem(key)

@@ -21,7 +21,7 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
 
     @fromStorage = ->
       stored = StorageService.getObject('currentTrack')
-      return null if _.isEmpty(stored)
+      return null unless stored
 
       track = new Track()
       angular.forEach @attributes, (attr) ->
@@ -34,7 +34,7 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       StorageService.setObject('currentTrack', object)
 
     @clearStorage: ->
-      StorageService.setObject('currentTrack', {})
+      StorageService.clear('currentTrack')
 
     @fromPosition = (lat, long) ->
       track = new Track()
