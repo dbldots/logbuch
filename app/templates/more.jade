@@ -13,10 +13,15 @@ html
         div.list.card
           a.item.item-icon-right(onclick="window.open('http://segel-vbs.de/content/378/66/ausschreibung-fahrtensegeln', '_system', 'location=yes')")
             span Fahrtensegler Regeln
+            i.icon.ion-information-circled
+
+        div.list.card
+          a.item.item-icon-right(ui-sref='settings')
+            span Einstellungen
             i.icon.ion-chevron-right
 
         div.list.card
           a.item.assertive(ng-click="resetDB()")
-            span Log löschen
+            span Datenbank zurücksetzen
           a.item.assertive(ui-sref='debug')
-            span Debug
+            span Debug Log

@@ -16,3 +16,6 @@ angular.module("logbuch")
 
   clear: (key) ->
     $window.localStorage.removeItem(key)
+
+  clearAll: ->
+    $window.localStorage.clear()

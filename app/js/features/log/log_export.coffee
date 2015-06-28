@@ -1,4 +1,4 @@
-angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, ToastrService, Log, DebugLog) ->
+angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, ToastrService, Log, DebugLog, StorageService) ->
   binaryArray = null
   filePath = null
 
@@ -34,13 +34,22 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
     definition =
       pageOrientation: 'landscape'
       content: [
-        table:
-          headerRows: 1,
-          widths: [ 100, '*', 150, 50, 50, 200 ],
+          text: "Logbuch von #{StorageService.get('settings.name', 'No Name')}"
+          fontSize: 16,
+          bold: true
+        ,
+          text: "Erstellt am #{$filter('datetime')(moment().toISOString())}"
+        ,
+          text: ' '
+          fontSize: 18
+        ,
+          table:
+            headerRows: 1,
+            widths: [ 100, '*', 150, 50, 50, 200 ],
 
-          body: [
-            [ 'Datum', 'Ereignis', 'Koordinaten', 'Distanz (km/nm)', 'Punkte', 'Notiz' ],
-          ]
+            body: [
+              [ 'Datum', 'Ereignis', 'Koordinaten', 'Distanz (km/nm)', 'Punkte', 'Notiz' ],
+            ]
       ]
 
     angular.forEach logs, (log) ->
@@ -55,7 +64,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
       else
         "#{$filter('dms_lat0')(log.start.lat)}, #{$filter('dms_lat0')(log.start.long)}"
 
-      definition.content[0].table.body.push([
+      definition.content[3].table.body.push([
         $filter('datetime')(log.start.timestamp),
         $filter('logFeatures')(log),
         coords,

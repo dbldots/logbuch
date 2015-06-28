@@ -100,5 +100,10 @@ angular.module("logbuch")
     templateUrl: "templates/debug.html"
     controller: "DebugCtrl"
 
+  .state "settings",
+    url: "/settings"
+    templateUrl: "templates/settings.html"
+    controller: "SettingsCtrl"
+
   # if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise "/tab/track"

@@ -25,7 +25,8 @@ html
                 div.types
                   span.type.positive-bg {{ log | logFeatures }}
                 div.numbers
-                  span.distance {{ log.distance_km | float2 }} km
+                  span.distance(ng-if="log.type == 'inland'") {{ log.distance_km | float2 }} km
+                  span.distance(ng-if="log.type == 'sea'") {{ log.distance_nm | float2 }} nm
                   span.points.badge.badge-energized {{ log.points }}
 
               div.row.comment.dark {{ log.comment }}
