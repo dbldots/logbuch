@@ -22,6 +22,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
 
   gotFileWriter = (writer) ->
     writer.onwriteend = (evt) ->
+      ToastrService.hide()
       $cordovaFileOpener2.open(
         filePath,
         'application/pdf'
@@ -30,7 +31,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
     writer.write(binaryArray)
 
   docDefinition = (logs) ->
-    docDefinition =
+    definition =
       pageOrientation: 'landscape'
       content: [
         table:
@@ -54,7 +55,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
       else
         "#{$filter('dms_lat0')(log.start.lat)}, #{$filter('dms_lat0')(log.start.long)}"
 
-      docDefinition.content[0].table.body.push([
+      definition.content[0].table.body.push([
         $filter('datetime')(log.start.timestamp),
         $filter('logFeatures')(log),
         coords,
@@ -63,19 +64,20 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
         String(log.comment)
       ])
 
-    docDefinition
+    definition
 
   run = ->
+    ToastrService.show('Exportiere Logs...', true)
     Log.all().then (logs) ->
       try
-        docDefinition = docDefinition(logs)
-        #docDefinition = { content: 'This is an sample PDF printed with pdfMake' }
+        doc = docDefinition(logs)
+        #doc = { content: 'This is an sample PDF printed with pdfMake' }
 
         if !window.cordova
-          pdfMake.createPdf(docDefinition).open()
+          pdfMake.createPdf(doc).open()
 
         else
-          pdfMake.createPdf(docDefinition).getBuffer (buffer) ->
+          pdfMake.createPdf(doc).getBuffer (buffer) ->
             utf8 = new Uint8Array(buffer) # convert to UTF-8
             binaryArray = utf8.buffer    # convert to binary
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail)

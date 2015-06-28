@@ -13,7 +13,7 @@ html
                   button.button.button-balanced(ng-hide="track", ng-click='start()') Start
                   button.button.button-positive(ng-show="track", ng-click='stop()') Stop
                 div.line
-                  button.button.button-stable(ng-click='waypoint()', ng-class='{disabled: !isTracking()}') Wegpunkt
+                  button.button.button-stable(ng-click='waypoint()', ng-class='{disabled: !track}') Wegpunkt
 
         div(ng-if="view == 'save'")
           div.list

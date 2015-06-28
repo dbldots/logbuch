@@ -2,4 +2,4 @@ angular.module("logbuch").controller "MoreCtrl", ($scope, $state, Log, DebugLog,
   $scope.resetDB = ->
     Log.resetTable()
     DebugLog.resetTable()
-    StorageService.setObject('currentTrack', {})
+    StorageService.clear('currentTrack')
