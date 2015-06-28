@@ -63,7 +63,7 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
     calculateCurrentDistance: ->
       reference = _.last(@waypoints)
       @distanceKm = @totalDistanceKm + Track.calculateDistanceKm(reference.lat, reference.long,  @lat, @long)
-      @distanceNm = @totalDistanceNm + Track.convertKmtoNm(@distanceKm)
+      @distanceNm = Track.convertKmtoNm(@distanceKm)
 
     calculateTotalDistance: ->
       distance = 0
