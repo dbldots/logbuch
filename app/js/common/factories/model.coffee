@@ -37,9 +37,19 @@ angular.module("logbuch").factory "Model", ($q, $log, DBService) ->
 
       record
 
-    #@find: (id) ->
-      #query   = "SELECT * FROM #{@table} WHERE id = ?"
-      #values  = [id]
+    @find: (id) ->
+      deferred = $q.defer()
+      query   = "SELECT * FROM #{@table} WHERE id = #{id}"
+
+      success = (result) ->
+        row = result.rows.item(0)
+        log = @fromDb(row)
+
+        deferred.resolve(log)
+
+      DBService.query(query: query).then success.bind(@)
+
+      deferred.promise
 
     #@where: (query, values) ->
 

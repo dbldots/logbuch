@@ -28,6 +28,13 @@ angular.module("logbuch")
         templateUrl: "templates/log.html"
         controller: "LogCtrl"
 
+  .state "tab.log-details",
+    url: "/log/:log_id"
+    views:
+      "log-tab":
+        templateUrl: "templates/log_details.html"
+        controller: "LogDetailsCtrl"
+
   .state "tab.add",
     url: "/add"
     views:

@@ -85,6 +85,8 @@ module.exports = new class GulpConfig
         # TESTFAIRY_TESTER_GROUPS: "logbuchTesters"
         TESTFAIRY_API_KEY: null
         TESTFAIRY_TESTER_GROUPS: null
+
+        GOOGLE_MAPS_KEY: process.env.GOOGLE_MAPS_KEY
       },
 
       development: {
@@ -142,6 +144,7 @@ module.exports = new class GulpConfig
       "ROLLBAR_CLIENT_ACCESS_TOKEN"
       "ROLLBAR_SOURCEMAPS_URL_PREFIX"
       "WEINRE_ADDRESS"
+      "GOOGLE_MAPS_KEY"
     ]
 
     # _SHELL_GLOBALS_KEYS defines which @GLOBALS

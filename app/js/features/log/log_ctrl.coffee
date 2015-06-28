@@ -1,4 +1,4 @@
-angular.module("logbuch").controller "LogCtrl", ($scope, $stateParams, $ionicPopup, $timeout, Log, LogExport, ToastrService) ->
+angular.module("logbuch").controller "LogCtrl", ($scope, $state, $stateParams, $ionicPopup, $timeout, Log, LogExport, ToastrService) ->
   query = ->
     Log.all('id DESC').then (logs) ->
       $scope.logs = logs
@@ -27,7 +27,7 @@ angular.module("logbuch").controller "LogCtrl", ($scope, $stateParams, $ionicPop
       log.destroy().then query if res
 
   $scope.show = (log) ->
-    #$ionicPopup.alert(title: "show #{log.id}")
+    $state.go('tab.log-details', log_id: log.id)
     
   $scope.export = ->
     LogExport.run()
