@@ -6,8 +6,7 @@ angular.module("logbuch").factory "Model", ($q, $log, DBService) ->
     @all: (order = 'id') ->
       deferred = $q.defer()
 
-      query   = "SELECT * FROM #{@table} ORDER BY ?"
-      values  = [order]
+      query   = "SELECT * FROM #{@table} ORDER BY #{order}"
       records = []
 
       success = (result) ->
@@ -19,7 +18,7 @@ angular.module("logbuch").factory "Model", ($q, $log, DBService) ->
 
         deferred.resolve(records)
 
-      DBService.query(query: query, values: values).then success.bind(@)
+      DBService.query(query: query).then success.bind(@)
 
       deferred.promise
 
