@@ -75,6 +75,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
 
         if !window.cordova
           pdfMake.createPdf(doc).open()
+          ToastrService.hide()
 
         else
           pdfMake.createPdf(doc).getBuffer (buffer) ->
