@@ -17,9 +17,21 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, Lo
     path = new google.maps.Polyline(
       path: coords
       geodesic: true
-      strokeColor: '#FF0000'
+      strokeColor: '#886aea'
       strokeOpacity: 0.7
-      strokeWeight: 2
+      strokeWeight: 3
     )
 
     path.setMap(map)
+
+    bounds = new google.maps.LatLngBounds()
+    angular.forEach coords, (coord) ->
+      bounds.extend(coord)
+
+    map.setCenter(bounds.getCenter())
+    map.fitBounds(bounds)
+
+    map.setZoom(map.getZoom()-1)
+
+    if (map.getZoom() > 17)
+      map.setZoom(17)

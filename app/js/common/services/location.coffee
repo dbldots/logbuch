@@ -42,6 +42,8 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
     min = (frac * 60) | 0 # multiply fraction by 60 and truncate
     sec = (frac * 3600 - min * 60) || 0
 
+    deg = deg * -1 if deg < 0
+
     deg: deg
     min: min
     sec: sec
