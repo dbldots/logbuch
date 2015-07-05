@@ -18,27 +18,6 @@ html
     link(rel="icon", type="image/png", href="img/favicon.png")
     link(rel="apple-touch-icon", href="img/favicon.png" )
 
-    //- notify about all errors
-    -if (GLOBALS.ROLLBAR_CLIENT_ACCESS_TOKEN)
-      script(type="text/javascript").
-        var _rollbarConfig = {
-            accessToken: "#{GLOBALS.ROLLBAR_CLIENT_ACCESS_TOKEN}",
-            captureUncaught: true,
-            payload: {
-              environment: "#{GLOBALS.ENV}",
-              client: {
-                javascript: {
-                  source_map_enabled: true,
-                  code_version: "#{GLOBALS.CODE_VERSION}",
-                  // Optionally have Rollbar guess which frames the error was thrown from
-                  // when the browser does not provide line and column numbers.
-                  guess_uncaught_frames: true
-                }
-              }
-            }
-        };
-      script(src="js/rollbar.js")
-
     //- Add google analytics, if available.
     //- NOTE: to make it work on Cordova,
     //-   you will also need angulartics and cordova google-analytics-plugin.

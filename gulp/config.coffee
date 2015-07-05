@@ -178,9 +178,9 @@ module.exports = new class GulpConfig
           # (f.e. bower components)
 
           # Google Analytics support (for both in-browser and Cordova app)
-          "assets/components/angulartics/src/angulartics.js"
-          "assets/components/angulartics/src/angulartics-ga.js"
-          "assets/components/angulartics/src/angulartics-ga-cordova.js"
+          #"assets/components/angulartics/src/angulartics.js"
+          #"assets/components/angulartics/src/angulartics-ga.js"
+          #"assets/components/angulartics/src/angulartics-ga-cordova.js"
           "assets/components/moment/moment.js"
           "assets/components/moment/locale/de.js"
           "assets/components/lodash/lodash.js"
