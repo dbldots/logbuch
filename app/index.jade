@@ -21,14 +21,14 @@ html
     //- Add google analytics, if available.
     //- NOTE: to make it work on Cordova,
     //-   you will also need angulartics and cordova google-analytics-plugin.
-    -if (GLOBALS.GOOGLE_ANALYTICS_ID)
-      script(type="text/javascript").
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    //--if (GLOBALS.GOOGLE_ANALYTICS_ID)
+      //-script(type="text/javascript").
+        //-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        //-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        //-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        //-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', '#{GLOBALS.GOOGLE_ANALYTICS_ID}', '#{GLOBALS.GOOGLE_ANALYTICS_HOST}');
+        //-ga('create', '#{GLOBALS.GOOGLE_ANALYTICS_ID}', '#{GLOBALS.GOOGLE_ANALYTICS_HOST}');
 
     //- define required JS GLOBALS
     script.
