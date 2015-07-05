@@ -35,7 +35,7 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
       pageOrientation: 'landscape'
       content: [
           text: "Logbuch von #{StorageService.get('settings.name', 'No Name')}"
-          fontSize: 16,
+          fontSize: 16
           bold: true
         ,
           text: "Erstellt am #{$filter('datetime')(moment().toISOString())}"
@@ -52,7 +52,9 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
             ]
       ]
 
+    total = 0
     angular.forEach logs, (log) ->
+      total += log.points
       distance = if log.type == 'sea' then log.distance_nm else log.distance_km
       distance = $filter('float2')(distance)
 
@@ -72,6 +74,15 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
         String(log.points),
         String(log.comment)
       ])
+
+    definition.content.push(
+      text: ' '
+      fontSize: 18
+    )
+    definition.content.push(
+      text: "Total: #{total} Punkte"
+      bold: true
+    )
 
     definition
 
