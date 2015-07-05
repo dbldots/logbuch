@@ -22,4 +22,4 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, Lo
     bounds = new plugin.google.maps.LatLngBounds(coords)
     map.setCenter(bounds.getCenter())
 
-    map.setZoom(14)
+    map.setZoom(12)
