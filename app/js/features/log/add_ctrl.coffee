@@ -23,7 +23,7 @@ angular.module("logbuch")
       ToastrService.show('Ermitteln der Koordinaten fehlgeschlagen.')
 
     ToastrService.show('Ermittle Koordinaten...', true)
-    LocationService.getPosition().then success, error
+    LocationService.getAccuratePosition().then success, error
 
   if isTrack
     $scope.log.type = 'inland'

@@ -10,11 +10,36 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
 
     $ionicPlatform.ready ->
       $cordovaGeolocation
-        .getCurrentPosition(timeout: 10000, enableHighAccuracy: true)
+        .getCurrentPosition(timeout: 10000, enableHighAccuracy: false)
         .then success, error
 
     deferred.promise
 
+  getAccuratePosition: ->
+    deferred = $q.defer()
+    times = 3
+    runner = 0
+    bounds = new google.maps.LatLngBounds()
+
+    error = ->
+      deferred.reject()
+
+    success = (position) ->
+      bounds.extend(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+
+      if runner == times
+        center = bounds.getCenter()
+        deferred.resolve(coords: { latitude: center.lat(), longitude: center.lng() })
+      else
+        $timeout run, 1500
+
+    run = =>
+      runner += 1
+      @getPosition().then success.bind(@), error
+
+    run()
+    deferred.promise
+        
   watching: false
   watchPosition: ->
     return if @watching
@@ -47,3 +72,4 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
     deg: deg
     min: min
     sec: sec
+

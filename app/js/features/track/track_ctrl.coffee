@@ -25,15 +25,23 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
       ToastrService.show('Ermitteln der Koordinaten fehlgeschlagen.')
 
     ToastrService.show('Ermittle Koordinaten...', true)
-    LocationService.getPosition().then success, error
+    LocationService.getAccuratePosition().then success, error
 
   $scope.stop = ->
-    $scope.track.addWaypoint($scope.track.lat, $scope.track.long)
-    $scope.log = $scope.track.toLog()
-    $scope.track = null
-    Track.clearStorage()
-    LocationService.clearWatch($scope.watcher)
-    $scope.view = 'save'
+    success = (position) ->
+      ToastrService.hide()
+      $scope.track.addWaypoint(position.coords.latitude, position.coords.longitude)
+      $scope.log = $scope.track.toLog()
+      $scope.track = null
+      Track.clearStorage()
+      LocationService.clearWatch($scope.watcher)
+      $scope.view = 'save'
+
+    error = ->
+      ToastrService.show('Ermitteln der Koordinaten fehlgeschlagen.')
+
+    ToastrService.show('Ermittle Koordinaten...', true)
+    LocationService.getAccuratePosition().then success, error
 
   $scope.cancel = ->
     $scope.view = 'track'
@@ -47,7 +55,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
       ToastrService.show('Ermitteln der Koordinaten fehlgeschlagen.')
 
     ToastrService.show('Ermittle Koordinaten...', true)
-    LocationService.getPosition().then success, error
+    LocationService.getAccuratePosition().then success, error
 
   $scope.save = ->
     $scope.log.save().then ->
