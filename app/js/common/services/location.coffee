@@ -2,16 +2,13 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
   getPosition: ->
     deferred = $q.defer()
 
-    success = (position) ->
-      deferred.resolve(position)
-
-    error = ->
-      deferred.reject()
-
     $ionicPlatform.ready ->
-      $cordovaGeolocation
-        .getCurrentPosition(timeout: 10000, enableHighAccuracy: false)
-        .then success, error
+      try
+        plugin.google.maps.getMap().getMyLocation (location) ->
+          deferred.resolve(location)
+      catch
+        deferred.reject()
+
 
     deferred.promise
 
@@ -19,17 +16,16 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
     deferred = $q.defer()
     times = 3
     runner = 0
-    bounds = new google.maps.LatLngBounds()
+    bounds = new plugin.google.maps.LatLngBounds()
 
     error = ->
       deferred.reject()
 
     success = (position) ->
-      bounds.extend(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+      bounds.extend(position.latLng)
 
       if runner == times
-        center = bounds.getCenter()
-        deferred.resolve(coords: { latitude: center.lat(), longitude: center.lng() })
+        deferred.resolve(latLng: bounds.getCenter())
       else
         $timeout run, 1500
 

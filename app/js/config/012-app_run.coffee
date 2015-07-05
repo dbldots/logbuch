@@ -8,13 +8,15 @@ ionic.Platform.ready ->
   angular.bootstrap document, [GLOBALS.ANGULAR_APP_NAME]
 
 
-app.run ($log, $timeout, Log, DebugLog) ->
+app.run ($log, $timeout, $rootScope, Log, DebugLog) ->
   $log.debug "Ionic app \"#{GLOBALS.ANGULAR_APP_NAME}\" has just started (app.run)!" unless GLOBALS.ENV == "test"
 
   # Finally, let's show the app, by hiding the splashscreen
   # (it should be visible up until this moment)
   $timeout ->
     navigator.splashscreen?.hide()
+
+  $rootScope.map = plugin.google.maps.Map.getMap()
 
   Log.createTable()
   DebugLog.createTable()

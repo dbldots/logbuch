@@ -10,8 +10,8 @@ angular.module("logbuch")
     success = (position) ->
       ToastrService.hide()
       $scope.log.waypoints = [
-        lat: position.coords.latitude
-        long: position.coords.longitude
+        lat: position.latLng.lat
+        long: position.latLng.lng
         timestamp: moment().toISOString()
       ]
       $scope.log.calculatePoints()

@@ -6,8 +6,8 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
     $log.info 'got position update', position, moment().toISOString()
     return unless $scope.track
 
-    new DebugLog("updating position. lat: #{position.coords.latitude} long: #{position.coords.longitude}").save()
-    $scope.track.updateCurrentPosition(position.coords.latitude, position.coords.longitude)
+    new DebugLog("updating position. lat: #{position.latLng.lat} long: #{position.latLng.lng}").save()
+    $scope.track.updateCurrentPosition(position.latLng.lat, position.latLng.lng)
     Track.toStorage($scope.track)
 
   if $scope.view == 'track'
@@ -16,7 +16,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
 
   $scope.start = ->
     success = (position) ->
-      $scope.track = Track.fromPosition(position.coords.latitude, position.coords.longitude)
+      $scope.track = Track.fromPosition(position.latLng.lat, position.latLng.lng)
       Track.toStorage($scope.track)
       ToastrService.hide()
       LocationService.watchPosition()
@@ -30,7 +30,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
   $scope.stop = ->
     success = (position) ->
       ToastrService.hide()
-      $scope.track.addWaypoint(position.coords.latitude, position.coords.longitude)
+      $scope.track.addWaypoint(position.latLng.lat, position.latLng.lng)
       $scope.log = $scope.track.toLog()
       $scope.track = null
       Track.clearStorage()
@@ -48,7 +48,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
 
   $scope.waypoint = ->
     success = (position) ->
-      $scope.track.addWaypoint(position.coords.latitude, position.coords.longitude)
+      $scope.track.addWaypoint(position.latLng.lat, position.latLng.lng)
       ToastrService.hide()
 
     error = ->

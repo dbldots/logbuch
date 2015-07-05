@@ -2,36 +2,24 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, Lo
   Log.find($stateParams.log_id).then (log) ->
     $scope.log = log
 
-    startLatLng = new google.maps.LatLng(log.start.lat, log.start.long)
-    mapOptions =
-      center: startLatLng
-      zoom: 16
-      mapTypeId: google.maps.MapTypeId.ROADMAP
- 
-    map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    divMap = document.getElementById('map')
+
+    map = plugin.google.maps.Map.getMap()
+    map.clear()
+    map.setDiv(divMap)
 
     coords = []
     angular.forEach log.waypoints, (waypoint) ->
-      coords.push new google.maps.LatLng(waypoint.lat, waypoint.long)
+      coords.push new plugin.google.maps.LatLng(waypoint.lat, waypoint.long)
 
-    path = new google.maps.Polyline(
-      path: coords
+    map.addPolyline(
+      points: coords
+      color: '#886aea'
+      width: 4
       geodesic: true
-      strokeColor: '#886aea'
-      strokeOpacity: 0.7
-      strokeWeight: 3
     )
 
-    path.setMap(map)
-
-    bounds = new google.maps.LatLngBounds()
-    angular.forEach coords, (coord) ->
-      bounds.extend(coord)
-
+    bounds = new plugin.google.maps.LatLngBounds(coords)
     map.setCenter(bounds.getCenter())
-    map.fitBounds(bounds)
 
-    map.setZoom(map.getZoom()-1)
-
-    if (map.getZoom() > 17)
-      map.setZoom(17)
+    map.setZoom(14)
