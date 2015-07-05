@@ -4,7 +4,7 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
 
     $ionicPlatform.ready ->
       try
-        plugin.google.maps.getMap().getMyLocation (location) ->
+        plugin.google.maps.Map.getMap().getMyLocation (location) ->
           deferred.resolve(location)
       catch
         deferred.reject()
