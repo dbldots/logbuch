@@ -1,6 +1,6 @@
 angular.module("logbuch").factory "Track", (StorageService, Log) ->
   class Track
-    @attributes = ['lat', 'long', 'lastLat', 'lastLong', 'lastTime', 'waypoints', 'distanceKm', 'distanceNm', 'speedKmh', 'speedKn']
+    @attributes = ['lat', 'long', 'waypoints', 'distanceKm', 'distanceNm', 'speedKmh', 'speedKn']
 
     @calculateDistanceKm: (lat1, lon1, lat2, lon2) ->
       deg2rad = (deg) -> deg * (Math.PI/180)
@@ -40,9 +40,6 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       track = new Track()
       track.lat = lat
       track.long = long
-      track.lastLat = lat
-      track.lastLong = long
-      track.lastTime = moment()
       track.addWaypoint(lat, long)
       track.distanceKm = 0
       track.distanceNm = 0
@@ -59,8 +56,6 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       true
 
     updateCurrentPosition: (position) ->
-      @lastLat  = angular.copy(@lat)
-      @lastLong = angular.copy(@long)
       @lat      = position.latLng.lat
       @long     = position.latLng.lng
 
@@ -68,20 +63,7 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       @calculateCurrentDistance()
       @calculateCurrentSpeed()
 
-      @lastTime = moment()
       true
-
-    calculateCurrentSpeed: ->
-      elapsed       = moment().diff(@lastTime, 'hours', true)
-      distance      = Track.calculateDistanceKm(@lastLat, @lastLong,  @lat, @long)
-      @speedKmh     = distance/elapsed
-      @speedKmh     = @speedKmh * -1 if @speedKmh < 0
-      @speedKn      = @speedKmh * 0.539957
-
-    calculateCurrentDistance: ->
-      reference = _.last(@waypoints)
-      @distanceKm = @totalDistanceKm + Track.calculateDistanceKm(reference.lat, reference.long,  @lat, @long)
-      @distanceNm = Track.convertKmtoNm(@distanceKm)
 
     calculateTotalDistance: ->
       distance = 0
@@ -93,6 +75,17 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
 
       @totalDistanceKm = distance
       @totalDistanceNm = Track.convertKmtoNm(distance)
+
+    calculateCurrentDistance: ->
+      reference = _.last(@waypoints)
+      @distanceKm = @totalDistanceKm + Track.calculateDistanceKm(reference.lat, reference.long,  @lat, @long)
+      @distanceNm = Track.convertKmtoNm(@distanceKm)
+
+    calculateCurrentSpeed: ->
+      reference     = _.first(@waypoints)
+      elapsed       = moment().diff(moment(reference.timestamp), 'hours', true)
+      @speedKmh     = @distanceKm/elapsed
+      @speedKn      = @speedKmh * 0.539957
 
     toLog: ->
       log = new Log()
