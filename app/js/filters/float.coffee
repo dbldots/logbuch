@@ -7,3 +7,7 @@ angular.module("logbuch")
 .filter "float3", ->
   (value) ->
     parseFloat(value).toFixed(3)
+
+.filter "round", ->
+  (value) ->
+    parseFloat(value).toFixed()

@@ -8,7 +8,7 @@ html
               div.line.coord {{ track.lat | dms_lat3 }}
               div.line.coord {{ track.long | dms_long3 }}
               div.line.distance {{ track.distanceKm | float2 }} km / {{ track.distanceNm | float2 }} nm
-              div.line.speed {{ track.speedKmh | float2 }} km/h / {{ track.speedKn | float2 }} kn
+              div.line.speed {{ track.speedKmh | round }} km/h / {{ track.speedKn | round }} kn
               div.buttons
                 div.line
                   button.button.button-balanced(ng-hide="track", ng-click='start()') Start
