@@ -12,13 +12,11 @@ angular.module("logbuch").filter "logFeatures", ->
       when 'inland'
         text = 'Binnen'
         text += ', unter Motor'     if log.engine
-        text += ', mit Familie'     if log.family
         text += ', starke Strömung' if log.current
         text
 
       when 'sea'
         text = 'See'
         text += ', unter Motor'     if log.engine
-        text += ', mit Familie'     if log.family
         text += ', starke Strömung' if log.current
         text

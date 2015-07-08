@@ -6,7 +6,7 @@ angular.module("logbuch").factory "Log", (Model) ->
       { name: "type",        type: "text"                                }
       { name: "engine",      type: "integer",              map: "bool"   }
       { name: "current",     type: "integer",              map: "bool"   }
-      { name: "family",      type: "integer",              map: "bool"   }
+      { name: "family",      type: "integer",              map: "bool"   } # unused
       { name: "waypoints",   type: "text",                 map: "json"   }
       { name: "distance_km", type: "real"                                }
       { name: "distance_nm", type: "real"                                }
@@ -48,8 +48,6 @@ angular.module("logbuch").factory "Log", (Model) ->
         when 'trailer'        then points = 50
         when 'club_trip'      then points = 20
         when 'regatta'        then points = 25
-
-      points = points * 2 if @family
 
       @points = Math.round(points || 0)
 
