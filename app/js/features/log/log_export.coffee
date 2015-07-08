@@ -5,7 +5,6 @@ angular.module("logbuch").factory "LogExport", ($cordovaFileOpener2, $filter, To
   fail = (error) ->
     ToastrService.show('Log Export fehlgeschlagen!')
     new DebugLog(JSON.stringify(error)).save()
-    console.log error
 
   gotFS = (fileSystem) ->
     filename = 'logExport.pdf'
