@@ -43,7 +43,8 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       track.addWaypoint(lat, long)
       track.distanceKm = 0
       track.distanceNm = 0
-      track.speed = 0
+      track.speedKmh = 0
+      track.speedKn = 0
       track
 
     constructor: ->
