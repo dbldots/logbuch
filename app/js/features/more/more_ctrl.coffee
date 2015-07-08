@@ -4,3 +4,6 @@ angular.module("logbuch").controller "MoreCtrl", ($scope, $state, Log, DebugLog,
     DebugLog.resetTable()
 
     StorageService.clearAll()
+
+  $scope.resetDebugLog = ->
+    DebugLog.resetTable()
