@@ -7,5 +7,7 @@ html
             span.input-label Name (für PDF Export)
             input(type='text', ng-model='settings.name', placeholder='Ihr Name')
 
+          ion-toggle(ng-model='settings.debug') Debug Modus (Aktiviere Debug Log)
+
           button.button.button-full.button-positive(ng-click='save()') Speichern
           button.button.button-full.button(ng-click='cancel()') Abbrechen
