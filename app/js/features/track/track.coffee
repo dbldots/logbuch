@@ -1,6 +1,6 @@
 angular.module("logbuch").factory "Track", (StorageService, Log) ->
   class Track
-    @attributes = ['lat', 'long', 'waypoints', 'distanceKm', 'distanceNm']
+    @attributes = ['lat', 'long', 'waypoints', 'distanceKm', 'distanceNm', 'speedKmh', 'speedKn']
 
     @calculateDistanceKm: (lat1, lon1, lat2, lon2) ->
       deg2rad = (deg) -> deg * (Math.PI/180)
@@ -43,6 +43,7 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       track.addWaypoint(lat, long)
       track.distanceKm = 0
       track.distanceNm = 0
+      track.speed = 0
       track
 
     constructor: ->
@@ -53,12 +54,21 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
       @calculateTotalDistance()
       true
 
-    updateCurrentPosition: (lat, long) ->
-      @lat = lat
-      @long = long
+    updateCurrentPosition: (position) ->
+      @lat = position.latLng.lat
+      @long = position.latLng.lng
       @calculateTotalDistance()
       @calculateCurrentDistance()
+      @calculateCurrentSpeed()
       true
+
+    calculateCurrentSpeed: ->
+      reference     = _.last(@waypoints)
+      refTimestamp  = moment(reference.timestamp)
+      elapsed       = moment().diff(refTimestamp, 'hours', true)
+      distance      = Track.calculateDistanceKm(reference.lat, reference.long,  @lat, @long)
+      @speedKmh     = distance/elapsed
+      @speedKn      = @speedKmh * 0.539957
 
     calculateCurrentDistance: ->
       reference = _.last(@waypoints)
