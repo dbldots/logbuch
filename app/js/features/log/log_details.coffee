@@ -1,4 +1,4 @@
-angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, Log) ->
+angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, $filter, Log) ->
   Log.find($stateParams.log_id).then (log) ->
     $scope.log = log
 
@@ -10,7 +10,13 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, Lo
 
     coords = []
     angular.forEach log.waypoints, (waypoint) ->
-      coords.push new plugin.google.maps.LatLng(waypoint.lat, waypoint.long)
+      latLng = new plugin.google.maps.LatLng(waypoint.lat, waypoint.long)
+
+      coords.push(latLng)
+      map.addMarker(
+        { position: latLng, title: $filter('datetime')(waypoint.timestamp) },
+        (marker) -> marker.showInfoWindow()
+      )
 
     map.addPolyline(
       points: coords
