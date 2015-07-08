@@ -6,8 +6,8 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
     $log.info 'got position update', position, moment().toISOString()
     return unless $scope.track
 
-    new DebugLog("updating position. lat: #{position.latLng.lat} long: #{position.latLng.lng}").save()
-    $scope.track.updateCurrentPosition(position.latLng.lat, position.latLng.lng)
+    new DebugLog("updating position: #{JSON.stringify(position)}").save()
+    $scope.track.updateCurrentPosition(position)
     Track.toStorage($scope.track)
 
   if $scope.view == 'track'
@@ -45,6 +45,7 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
 
   $scope.cancel = ->
     $scope.view = 'track'
+    $ionicScrollDelegate.scrollTop()
 
   $scope.waypoint = ->
     success = (position) ->
