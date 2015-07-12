@@ -4,11 +4,12 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
 
     $ionicPlatform.ready ->
       try
-        plugin.google.maps.Map.getMap().getMyLocation (location) ->
-          deferred.resolve(location)
+        success = (location) -> deferred.resolve(location)
+        error   = -> deferred.reject()
+
+        plugin.google.maps.Map.getMap().getMyLocation success, error
       catch
         deferred.reject()
-
 
     deferred.promise
 
@@ -35,7 +36,7 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
 
     run()
     deferred.promise
-        
+
   watching: false
   watchPosition: ->
     return if @watching
