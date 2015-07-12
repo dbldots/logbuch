@@ -1,4 +1,4 @@
-angular.module("logbuch").controller "LogCtrl", ($scope, $state, $stateParams, $ionicPopup, $timeout, $ionicViewSwitcher, Log, LogExport, ToastrService) ->
+angular.module("logbuch").controller "LogCtrl", ($scope, $state, $stateParams, $ionicHistory, $ionicPopup, $timeout, Log, LogExport, ToastrService) ->
   query = ->
     Log.all('id DESC').then (logs) ->
       $scope.logs = logs
@@ -27,9 +27,12 @@ angular.module("logbuch").controller "LogCtrl", ($scope, $state, $stateParams, $
       log.destroy().then query if res
 
   $scope.show = (log) ->
-    $ionicViewSwitcher.nextTransition('none')
+    $ionicHistory.nextViewOptions(
+      disableAnimate: true
+      disableBack: true
+    )
     $state.go('tab.log-details', log_id: log.id)
-    
+
   $scope.export = ->
     LogExport.run()
 

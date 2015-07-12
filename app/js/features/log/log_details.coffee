@@ -1,10 +1,11 @@
-angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, $filter, Log) ->
+angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log) ->
   Log.find($stateParams.log_id).then (log) ->
     $scope.log = log
 
     divMap = document.getElementById('map')
 
     map = plugin.google.maps.Map.getMap()
+
     map.clear()
     map.setDiv(divMap)
 
@@ -29,3 +30,10 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $stateParams, $f
     map.setCenter(bounds.getCenter())
 
     map.setZoom(12)
+
+  $scope.back = ->
+    $ionicHistory.nextViewOptions(
+      disableAnimate: true
+      disableBack: true
+    )
+    $state.go('tab.log')
