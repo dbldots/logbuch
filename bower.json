@@ -14,7 +14,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "ionic": "v1.0.0",
+    "ionic": "v1.0.1",
     "angulartics": "~0.17.2",
     "moment": "~2.10.3",
     "lodash": "~3.9.3",
