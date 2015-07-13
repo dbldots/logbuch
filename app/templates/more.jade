@@ -7,23 +7,36 @@ html
       ion-content(has-header='true', padding='true')
         div.card
           div.item.item-text-wrap.stable-bg
-            h2 Logbuch v0.0.1
-            p Copyright Johannes-Kostas Götzinger
+            h2 Logbuch v{{GLOBALS.BUNDLE_VERSION}}
+            p © Johannes-Kostas Götzinger
+
+        div.card
+          div.item.item-text-wrap.stable-bg
+            h2 Credits
+            p Logo made by 
+              a(onclick="window.open('http://yanlu.de', '_system', 'location=yes')") Yannick (yanlu.de) 
+              | CC BY 3.0
 
         div.list.card
+          div.item.item-divider
+            | Hilfe
           a.item.item-icon-right(onclick="window.open('http://segel-vbs.de/content/378/66/ausschreibung-fahrtensegeln', '_system', 'location=yes')")
             span Fahrtensegler Regeln
             i.icon.ion-information-circled.positive
 
         div.list.card
+          div.item.item-divider
+            | Einstellungen
           a.item.item-icon-right(ui-sref='settings')
             span Einstellungen
             i.icon.ion-chevron-right
-
-        div.list.card
           a.item.assertive(ng-click="resetDB()")
             span Datenbank zurücksetzen
-          a.item.assertive(ng-click="resetDebugLog()")
-            span Debug Log zurücksetzen
-          a.item.assertive(ui-sref='debug')
+
+        div.list.card
+          div.item.item-divider
+            | Entwickleroptionen
+          a.item.dark(ui-sref='debug')
             span Debug Log
+          a.item.dark(ng-click="resetDebugLog()")
+            span Debug Log zurücksetzen
