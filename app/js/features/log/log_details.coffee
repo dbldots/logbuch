@@ -1,13 +1,19 @@
 angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log) ->
+  map = plugin.google.maps.Map.getMap()
+
+  $scope.$on '$ionicView.enter', ->
+    stateChangeListener = $scope.$on '$stateChangeSuccess', (data) ->
+      map.setVisible(false)
+      stateChangeListener()
+
   Log.find($stateParams.log_id).then (log) ->
     $scope.log = log
 
     divMap = document.getElementById('map')
 
-    map = plugin.google.maps.Map.getMap()
-
     map.clear()
     map.setDiv(divMap)
+    map.setVisible(true)
 
     coords = []
     angular.forEach log.waypoints, (waypoint) ->
