@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2048"
+   height="1496"
+   viewBox="0 0 2048 1496"
+   id="svg3385"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="/Users/johannes/Desktop/logbuch_spash_landscape.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="logbuch_splash_landscape.svg">
+  <defs
+     id="defs3387">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3371">
+      <path
+         d="m 0,2.67969 220,0 0,200 -220,0 0,-200 z"
+         id="path3373"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.37079208"
+     inkscape:cx="1108.5965"
+     inkscape:cy="897.47664"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer4"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1058"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3616" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3390">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 3">
+    <rect
+       style="fill:#5fbcd3"
+       id="rect3698"
+       width="2048"
+       height="1496"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,443.63784)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(0,1352)">
+    <g
+       id="g3365"
+       transform="matrix(4.2532125,0,0,-4.4112388,564.61052,-198.94219)">
+      <g
+         id="g3367">
+        <g
+           id="g3369"
+           clip-path="url(#clipPath3371)">
+          <path
+             d="m 111.988,162.68 0,-71.9886 71.992,0 -71.992,71.9886 z m 8.012,-20 43.98,-43.9808 -43.98,0 0,43.9808 z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path3375"
+             inkscape:connector-curvature="0" />
+          <path
+             d="M 113.59,29.8711 C 83.1992,46.6602 51.9883,45.8789 23.9805,32.2891 l 0,-8.8282 c 27.2304,13.6289 56.8008,16.0196 86.4105,-0.7812 28.828,-16.01954 56.8,-16.01954 81.597,-4.8008 l 0,8.7813 C 168.012,15.4883 141.602,14.6719 113.59,29.8711 Z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path3377"
+             inkscape:connector-curvature="0" />
+          <path
+             d="M 202.379,57.8789 C 176.02,40.3008 145.59,36.2695 113.59,53.8906 78.3984,73.8906 43.1992,69.0898 11.2109,49.8711 7.19141,47.4805 3.19922,45.0586 0,42.6797 L 0,32.2891 c 4.80078,3.9804 9.60938,7.1914 15.1992,10.3906 30.3906,17.6211 62.4219,22.3789 94.4098,3.9805 35.192,-20 68.012,-15.1914 97.582,4.0312 3.2,2.3789 6.399,3.9805 8.829,6.3984 l 0,10.3907 c -4.032,-3.1992 -8.008,-6.4024 -13.641,-9.6016 z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path3379"
+             inkscape:connector-curvature="0" />
+          <path
+             d="m 29.6094,67.4805 c -1.5977,2.3906 -3.1992,4.8086 -4.0196,7.1914 l 149.6092,0 c -3.211,-9.6133 -12,-15.9727 -22.39,-15.9727 l -31.207,0 c 9.609,-4.8086 19.179,-7.2304 28.789,-8.0078 l 1.597,0 c 17.621,0 31.992,14.3672 31.992,31.9883 l -80,0 0,120.0003 -7.9605,0 0,-120.0003 -80,0 c 0,-7.1914 2.3789,-13.5899 6.3594,-18.3984 2.4219,0.7773 4.8125,1.5976 7.2305,3.1992 z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path3381"
+             inkscape:connector-curvature="0" />
+          <path
+             d="m 80,138.699 c 0,35.973 8.0117,63.981 8.0117,63.981 0,0 -24.0312,-3.981 -48.0117,-43.981 -23.9805,-40 -23.9805,-68.0076 -23.9805,-68.0076 l 71.9922,0 c 0,0 -8.0117,11.9886 -8.0117,48.0076 z m -3.1992,-39.9998 -52,0 c 0,0 0,14.3708 18.3984,49.5708 16.0196,29.609 33.6016,40 33.6016,40 0,0 -4.8125,-23.989 -4.8125,-49.571 0,-25.629 4.8125,-39.9998 4.8125,-39.9998 z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path3383"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:500;font-size:40px;line-height:125%;font-family:Futura;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Futura Medium';font-stretch:normal;font-variant:normal;"
+       x="488.1442"
+       y="-133.78369"
+       id="text3618"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3620"
+         x="488.1442"
+         y="-133.78369" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="1016.0681"
+       y="-230.87315"
+       id="text3622"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3624"
+         x="1016.0681"
+         y="-230.87315"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:80px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:end;text-anchor:end">Logbuch</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="1345.1638"
+       y="-176.93454"
+       id="text3628"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="1345.1638"
+         y="-176.93454"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:35px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:end;text-anchor:end"
+         id="tspan3632">© Johannes-Kostas Götzinger</tspan></text>
+  </g>
+</svg>
