@@ -8,7 +8,7 @@ module.exports = new class GulpConfig
   constructor: ->
     @_GLOBALS_DEFAULTS = {
       defaults: {
-        BUNDLE_VERSION: "1.0.0"
+        BUNDLE_VERSION: "1.0.1"
 
         AVAILABLE_PLATFORMS: ["ios", "android"]
 
@@ -93,7 +93,7 @@ module.exports = new class GulpConfig
         ENV: "development"
 
         BUNDLE_ID: "com.dbldots.logbuch.development"
-        BUNDLE_NAME: "LogbuchDev"
+        BUNDLE_NAME: "Fahrtensegler LogbuchDev"
 
         # Automatically connect to weinre on application's startup
         # (this way you can debug your application on your PC even if it's running from mobile ;) )
@@ -105,7 +105,7 @@ module.exports = new class GulpConfig
         ENV: "production"
 
         BUNDLE_ID: "com.dbldots.logbuch.production"
-        BUNDLE_NAME: "Logbuch"
+        BUNDLE_NAME: "Fahrtensegler Logbuch"
 
         COMPRESS_ASSETS: true
 

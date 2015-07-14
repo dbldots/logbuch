@@ -6,7 +6,6 @@ angular.module("logbuch").factory "Log", (Model) ->
       { name: "type",        type: "text"                                }
       { name: "engine",      type: "integer",              map: "bool"   }
       { name: "current",     type: "integer",              map: "bool"   }
-      { name: "family",      type: "integer",              map: "bool"   } # unused
       { name: "waypoints",   type: "text",                 map: "json"   }
       { name: "distance_km", type: "real"                                }
       { name: "distance_nm", type: "real"                                }
