@@ -1,4 +1,4 @@
-angular.module("logbuch").factory "Track", (StorageService, Log) ->
+angular.module("logbuch").factory "Track", (StorageService, Log, DebugLog) ->
   class Track
     @attributes = ['lat', 'long', 'waypoints', 'distanceKm', 'distanceNm', 'speedKmh', 'speedKn']
 
@@ -18,6 +18,9 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
 
     @convertKmtoNm = (km) ->
       parseFloat(km) * 0.539956803456
+
+    @convertMsToKmh = (speed) ->
+      (speed > 0 && speed * 3.6) || 0
 
     @fromStorage = ->
       stored = StorageService.getObject('currentTrack')
@@ -58,10 +61,13 @@ angular.module("logbuch").factory "Track", (StorageService, Log) ->
     updateCurrentPosition: (position) ->
       @lat      = position.latLng.lat
       @long     = position.latLng.lng
+      @speedKmh = Track.convertMsToKmh(position.coords.speed)
+      @speedKn  = Track.convertKmtoNm(@speedKmh)
+      new DebugLog("Track Speed: #{position.coords.speed}", "km/h: #{@speedKmh}").save()
 
       @calculateTotalDistance()
       @calculateCurrentDistance()
-      @calculateCurrentSpeed()
+      #@calculateCurrentSpeed()
 
       true
 
