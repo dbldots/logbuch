@@ -3,25 +3,22 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
     deferred = $q.defer()
 
     $ionicPlatform.ready ->
-      try
-        posOptions = { timeout: 10000, enableHighAccuracy: true }
-        $cordovaGeolocation.getCurrentPosition(posOptions).then (position) ->
-          position.latLng = new plugin.google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+      posOptions = { timeout: 10000, enableHighAccuracy: true }
+      $cordovaGeolocation.getCurrentPosition(posOptions).then (position) ->
+        position.latLng = L.latLng(position.coords.latitude, position.coords.longitude)
 
-          debug = """
-            latitude: #{position.coords.latitude},
-            longitude: #{position.coords.longitude},
-            speed: #{position.coords.speed},
-            accuracy: #{position.coords.accuracy}
-          """
-          new DebugLog('getPosition Result', debug).save()
-          deferred.resolve(position)
+        debug = """
+          latitude: #{position.coords.latitude},
+          longitude: #{position.coords.longitude},
+          speed: #{position.coords.speed},
+          accuracy: #{position.coords.accuracy}
+        """
+        new DebugLog('getPosition Result', debug).save()
+        deferred.resolve(position)
 
-        , (error) ->
-          new DebugLog('getPosition Geolocation Error', error).save()
-          deferred.reject(error)
-      catch error
-        new DebugLog('getPosition Error', error).save()
+      , (error) ->
+        new DebugLog('getPosition Geolocation Error', error).save()
+        deferred.reject(error)
 
     deferred.promise
 
@@ -35,27 +32,21 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
       deferred.reject()
 
     success = (position) ->
-      try
-        if position.coords.accuracy <= 15
-          deferred.resolve(position)
-          return
+      if position.coords.accuracy <= 15
+        deferred.resolve(position)
+        return
 
-        if runner == times
-          if stack.length == 0
-            new DebugLog("GPS info not accurate. aborting").save()
-            deferred.reject()
-          else
-            bounds = new plugin.google.maps.LatLngBounds()
-            angular.forEach stack, (position) ->
-              bounds.extend(position.latLng)
-
-            deferred.resolve(latLng: bounds.getCenter())
-
+      if runner == times
+        if stack.length == 0
+          new DebugLog("GPS info not accurate. aborting").save()
+          deferred.reject()
         else
-          stack.push(position) if position.coords.accuracy <= 50
-          $timeout run, 1500
-      catch error
-        new DebugLog('getAccuratePosition Error', error).save()
+          bounds = L.latLngBounds(stack)
+          deferred.resolve(latLng: bounds.getCenter())
+
+      else
+        stack.push(position.latLng) if position.coords.accuracy <= 50
+        $timeout run, 1500
 
     run = =>
       runner += 1

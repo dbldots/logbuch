@@ -6,6 +6,7 @@ app = angular.module(GLOBALS.ANGULAR_APP_NAME)
 ionic.Platform.ready ->
   console.log 'ionic.Platform is ready! Running `angular.bootstrap()`...' unless GLOBALS.ENV == "test"
   angular.bootstrap document, [GLOBALS.ANGULAR_APP_NAME]
+  L.Icon.Default.imagePath = 'components/leaflet/dist/images'
 
 
 app.run ($log, $timeout, $rootScope, Log, DebugLog) ->
@@ -15,8 +16,6 @@ app.run ($log, $timeout, $rootScope, Log, DebugLog) ->
   # (it should be visible up until this moment)
   $timeout ->
     navigator.splashscreen?.hide()
-
-  $rootScope.map = plugin.google.maps.Map.getMap()
 
   Log.createTable()
   DebugLog.createTable()

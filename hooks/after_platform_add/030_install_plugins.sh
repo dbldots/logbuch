@@ -30,9 +30,7 @@ install_plugin "android ios" cordova-plugin-inappbrowser || exit $?
 install_plugin "android ios" cordova-plugin-splashscreen || exit $?
 install_plugin "android ios" cordova-plugin-whitelist || exit $?
 install_plugin "android ios" cordova-plugin-file || exit $?
-install_plugin "android ios" https://github.com/Nipher/phonegap-googlemaps-plugin.git "--variable API_KEY_FOR_ANDROID=$API_KEY_FOR_ANDROID --variable API_KEY_FOR_IOS=$API_KEY_FOR_IOS" || exit $?
 
-# install_plugin "android ios" https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git || exit $?
 install_plugin "android ios" https://github.com/litehelpers/Cordova-sqlite-storage.git || exit $?
 install_plugin "android ios" https://github.com/pwlin/cordova-plugin-file-opener2.git || exit $?
 

@@ -1,45 +1,26 @@
 angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log) ->
-  map = plugin.google.maps.Map.getMap()
+  map = L.map('map')
 
-  $scope.$on '$ionicView.enter', ->
-    stateChangeListener = $scope.$on '$stateChangeSuccess', (data) ->
-      map.setVisible(false)
-      stateChangeListener()
+  osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib})
+
+  #// start the map in South-East England
+  map.setView(new L.LatLng(51.3, 0.7),9)
+  map.addLayer(osm)
 
   Log.find($stateParams.log_id).then (log) ->
     $scope.log = log
 
-    divMap = document.getElementById('map')
-
-    map.clear()
-    map.setDiv(divMap)
-    map.setVisible(true)
-
     coords = []
     angular.forEach log.waypoints, (waypoint) ->
-      latLng = new plugin.google.maps.LatLng(waypoint.lat, waypoint.long)
+      latLng = L.latLng(waypoint.lat, waypoint.long)
 
       coords.push(latLng)
-      map.addMarker(
-        { position: latLng, title: $filter('datetime')(waypoint.timestamp) },
-        (marker) -> marker.showInfoWindow()
-      )
+      marker = L.marker(latLng).addTo(map)
+      marker.bindPopup($filter('datetime')(waypoint.timestamp))
 
-    map.addPolyline(
-      points: coords
-      color: '#886aea'
-      width: 4
-      geodesic: true
-    )
+    track = L.polyline(coords, color: '#886aea').addTo(map)
 
-    bounds = new plugin.google.maps.LatLngBounds(coords)
-    map.setCenter(bounds.getCenter())
-
-    map.setZoom(12)
-
-  $scope.back = ->
-    $ionicHistory.nextViewOptions(
-      disableAnimate: true
-      disableBack: true
-    )
-    $state.go('tab.log')
+    bounds = L.latLngBounds(coords)
+    map.fitBounds(bounds)

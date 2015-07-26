@@ -27,10 +27,6 @@ angular.module("logbuch").controller "LogCtrl", ($scope, $state, $stateParams, $
       log.destroy().then query if res
 
   $scope.show = (log) ->
-    $ionicHistory.nextViewOptions(
-      disableAnimate: true
-      disableBack: true
-    )
     $state.go('tab.log-details', log_id: log.id)
 
   $scope.export = ->

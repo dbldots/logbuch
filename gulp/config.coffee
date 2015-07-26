@@ -184,6 +184,7 @@ module.exports = new class GulpConfig
           "assets/components/moment/moment.js"
           "assets/components/moment/locale/de.js"
           "assets/components/lodash/lodash.js"
+          "assets/components/leaflet/dist/leaflet.js"
           "assets/components/ngCordova/dist/ng-cordova.js"
           "assets/components/pdfmake/build/pdfmake.js"
           "assets/components/pdfmake/build/vfs_fonts.js"
