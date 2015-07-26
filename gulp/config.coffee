@@ -8,7 +8,7 @@ module.exports = new class GulpConfig
   constructor: ->
     @_GLOBALS_DEFAULTS = {
       defaults: {
-        BUNDLE_VERSION: "1.0.1"
+        BUNDLE_VERSION: "1.0.2"
 
         AVAILABLE_PLATFORMS: ["ios", "android"]
 
