@@ -3,10 +3,10 @@ angular.module("logbuch").controller "TrackCtrl", ($scope, $ionicScrollDelegate,
 
   $rootScope.$$listeners['locationChange'] = [] # unregister existing listeners
   $rootScope.$on 'locationChange', (event, position) ->
-    $log.info 'got position update', position, moment().toISOString()
     return unless $scope.track
+    return unless position.coords.accuracy <= 50
 
-    new DebugLog("updating position: #{JSON.stringify(position)}").save()
+    new DebugLog('TrackCtrl Position Update').save()
     $scope.track.updateCurrentPosition(position)
     Track.toStorage($scope.track)
 
