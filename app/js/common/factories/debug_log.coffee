@@ -1,4 +1,4 @@
-angular.module("logbuch").factory "DebugLog", (Model, StorageService) ->
+angular.module("logbuch").factory "DebugLog", ($log, Model, StorageService) ->
   class DebugLog extends Model
     @table = 'debug_logs'
     @columns = [
@@ -7,10 +7,11 @@ angular.module("logbuch").factory "DebugLog", (Model, StorageService) ->
       { name: "timestamp", type: "text"                 }
     ]
 
-    constructor: (msg) ->
-      @msg = msg
+    constructor: ->
+      @msg = JSON.stringify(arguments)
       @timestamp = moment().toISOString()
 
     save: ->
       if StorageService.get('settings.debug', 'false') == 'true'
+        #$log.info @msg, @timestamp
         @constructor.insert(@)
