@@ -48,6 +48,13 @@ angular.module("logbuch")
         templateUrl: "templates/add/track.html"
         controller: "AddCtrl"
 
+  .state "tab.add-gpx-track",
+    url: "/add/track_gpx"
+    views:
+      "add-tab":
+        templateUrl: "templates/add/track_gpx.html"
+        controller: "AddGpxCtrl"
+
   .state "tab.add-mast",
     url: "/add/mast"
     views:
@@ -111,6 +118,10 @@ angular.module("logbuch")
     url: "/settings"
     templateUrl: "templates/settings.html"
     controller: "SettingsCtrl"
+
+  .state "help",
+    url: "/help"
+    templateUrl: "templates/help.html"
 
   # if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise "/tab/track"

@@ -21,6 +21,9 @@ html
         div.list.card
           div.item.item-divider
             | Hilfe
+          a.item.item-icon-right(ui-sref='help')
+            span Bedienungsanleitung
+            i.icon.ion-chevron-right
           a.item.item-icon-right(onclick="window.open('http://segel-vbs.de/content/378/66/ausschreibung-fahrtensegeln', '_system', 'location=yes')")
             span Fahrtensegler Regeln
             i.icon.ion-information-circled.positive
@@ -39,5 +42,3 @@ html
             | Entwickleroptionen
           a.item.dark(ui-sref='debug')
             span Debug Log
-          a.item.dark(ng-click="resetDebugLog()")
-            span Debug Log zurücksetzen

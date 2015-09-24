@@ -8,7 +8,7 @@ module.exports = new class GulpConfig
   constructor: ->
     @_GLOBALS_DEFAULTS = {
       defaults: {
-        BUNDLE_VERSION: "1.0.3"
+        BUNDLE_VERSION: "1.1.0"
 
         AVAILABLE_PLATFORMS: ["ios", "android"]
 
@@ -48,8 +48,8 @@ module.exports = new class GulpConfig
         HTTP_SERVER_IP: (->
           # Try to detect IP address in user's network.
           # If not, fallback to 127.0.0.1 .
-          localIp = exec("(ifconfig wlan 2>/dev/null || ifconfig en0) | grep inet | grep -v inet6 | awk '{print $2}' | sed 's/addr://g'").stdout.trim()
-          localIp = "192.168.1.52" unless parseInt(localIp) > 0
+          localIp = exec("ipconfig getifaddr en1").stdout.trim()
+          localIp = "127.0.0.1" unless parseInt(localIp) > 0
           localIp
         )()
 
@@ -167,6 +167,7 @@ module.exports = new class GulpConfig
       styles: ['app/css/**/*.scss']
       scripts:
         vendor: [
+          "assets/components/jquery/dist/jquery.js"
           "assets/components/ionic/release/js/ionic.js"
           "assets/components/angular/angular.js"
           "assets/components/angular-animate/angular-animate.js"

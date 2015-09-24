@@ -1,0 +1,101 @@
+html
+  body
+    ion-view(view-title='Hilfe: Bedienung')
+      ion-content(has-header='true', padding='true')
+        div.list.card
+          div.item.item-divider
+            | Allgemeines
+          div.item.item-text-wrap
+            p
+              | Diese App ist darauf ausgelegt Strecken, die mit einem Boot zurück gelegt wurden, aufzuzeichnen order manuell einzutragen.
+              | Desweiteren können Ereignisse, wie z.B. 'Schleuse passiert', ebenfalls eingetragen werden.
+            p: br
+            p
+              | Punkte nach der Ausschreibung zum Fahrtenwettbewerb im Verband Brandenburgischer Segler e.V. werden dabei jeweils automatisch
+              | ermittelt und erfasst.
+            p: br
+            p
+              | Alle Strecken und Ereignisse werden in einem 'Log' protokolliert, können eingesehen - oder als PDF Datei exportiert - werden.
+            p: br
+            p
+              | Die Hauptnavigation befindet sich am unteren Bildschirmrand:
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-navigation.png', width='100%')
+
+        div.list.card
+          div.item.item-divider.item-icon-left
+            i.icon.ion-arrow-shrink
+            | Aufzeichnen
+          div.item.item-text-wrap
+            p
+              | Eine Aufzeichnung muss lediglich gestartet und gestoppt werden. Beim segeln gilt nur die Strecke über Grund (ohne kreuzen).
+              | Bei Kursänderungen (umrunden einer Landzunge, abbiegen, umkehren) sollte ein 'Wegpunkt' gesetzt werden.
+            p: br
+            p
+              | Während einer Aufzeichnung werden folgende Informationen angezeigt:
+            p: small Aktuelle Koordinaten
+            p: small Zurückgelegte Strecke in Kilometern / nautische Meilen
+            p: small Aktuelle Geschwindigkeit in Km/h / Knoten
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-track.png', width='100%')
+
+        div.list.card
+          div.item.item-divider.item-icon-left
+            i.icon.ion-clipboard
+            | Log
+          div.item.item-text-wrap
+            p
+              | Der Log listet alle Strecken und Ereignisse.
+            p
+              | Pro Log-Eintrag werden Start- und Enddatum angezeigt, die dazugehörigen Koordinaten sowie ggf. die zurückgelegte Strecke als auch die erreichten Punkte.
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-log.png', width='100%')
+            p: br
+            p
+              | Durch langes Antippen eines Eintrags kann ein Löschen desselben veranlasst werden.
+            p: br
+            p
+              | Durch einfaches Antippen eines Eintrags gelangen Sie in die Detail Ansicht:
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-logdetails.png', width='100%')
+            p: br
+            p
+              | Um die komplette Liste in eine PDF Datei zu exportieren klicken Sie den Knopf in der oberen linken Ecke.
+              | Den Namen (Ihren Namen), der für den Export verwendet wird, können Sie unter 'Einstellungen' ändern.
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-export.png', width='100%')
+
+        div.list.card
+          div.item.item-divider.item-icon-left
+            i.icon.ion-plus
+            | Eintragen
+          div.item.item-text-wrap
+            p
+              | Hier können Sie dem Log manuell Strecken und Ereignisse hinzufügen.
+            p: br
+            div.row 
+              div.col-67 
+                img(ng-src='img/help-add.png', width='100%')
+
+        div.list.card
+          div.item.item-divider
+            | Strecken Importieren
+          div.item.item-text-wrap
+            p
+              | GPX Dateien können von {{GLOBALS.BUNDLE_NAME}} importiert werden. Dies ist insbesondere sinnvoll bei längeren
+              | Kanal-Fahrten. Nutzen Sie einfach eine GPS Tracking App um den exakten Streckenverlauf festzuhalten
+              | (Empfehlung: 'Open GPS Tracker') und fügen Sie diesen anschließend Ihrem Log hinzu.
+            p: br
+            p 
+              | Öffnen Sie die .gpx Datei mit dem Dateibrowser Ihres Smartphones. Wählen Sie dabei '{{GLOBALS.BUNDLE_NAME}}'
+              | aus der Liste der Apps die diesen Dateityp unterstützen.

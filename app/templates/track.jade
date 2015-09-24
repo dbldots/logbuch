@@ -18,9 +18,14 @@ html
 
         div(ng-if="view == 'save'")
           div.list
-            div.item.item-divider Datum, Punkte
+            div.item.item-divider Datum
             label.item.item-stacked-label
               div {{ log.start.timestamp | datetime }} - {{ log.destination.timestamp | datetime }}
+
+            div.item.item-divider Distanz, Punkte
+            label.item.item-stacked-label
+              div(ng-if="log.type == 'inland'") {{ log.distance_km | float2 }} km
+              div(ng-if="log.type == 'sea'") {{ log.distance_nm | float2 }} nm
               span.badge.badge-energized {{ log.points }}
 
             div.item.item-divider Eingaben

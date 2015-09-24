@@ -1,9 +1,9 @@
 angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log) ->
-  map = L.map('map')
+  map = L.map('mapDetails')
 
   osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-  osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib})
+  osm = new L.TileLayer(osmUrl, {minZoom: 6, maxZoom: 18, attribution: osmAttrib})
 
   #// start the map in South-East England
   map.setView(new L.LatLng(51.3, 0.7),9)

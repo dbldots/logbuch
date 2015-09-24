@@ -19,3 +19,37 @@ app.run ($log, $timeout, $rootScope, Log, DebugLog) ->
 
   Log.createTable()
   DebugLog.createTable()
+
+app.run ($rootScope, $state, DebugLog)->
+  if window.plugins?.webintent
+    readGpx = (url) ->
+      return if _.isEmpty(url)
+
+      $rootScope.importedGpx ||= []
+
+      success = (entry) ->
+        entry.file (file) ->
+          reader = new FileReader()
+          reader.onloadend = (evt) ->
+            gpx = evt.target.result
+            $rootScope.importedGpx.push gpx
+            $state.go('tab.add-gpx-track')
+
+          reader.readAsText(file)
+
+      error = ->
+        new DebugLog("Reading of #{url} failed.")
+
+      window.resolveLocalFileSystemURL url, success, error
+
+    window.plugins.webintent.getUri (url) ->
+      readGpx(url)
+
+    window.plugins.webintent.getExtra window.plugins.webintent.EXTRA_STREAM, (url) ->
+      readGpx(url)
+
+# DEBUG
+app.run ($timeout, $window) ->
+  # Useful for debugging, like `$NG("$rootScope")`
+  $timeout ->
+    $window.$NG = angular.element(document.body).injector()?.get

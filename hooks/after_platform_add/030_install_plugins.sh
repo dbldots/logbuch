@@ -33,6 +33,7 @@ install_plugin "android ios" cordova-plugin-file || exit $?
 
 install_plugin "android ios" https://github.com/litehelpers/Cordova-sqlite-storage.git || exit $?
 install_plugin "android ios" https://github.com/pwlin/cordova-plugin-file-opener2.git || exit $?
+install_plugin "android" https://github.com/florentvaldelievre/virtualartifacts-webintent.git || exit $?
 
 # Created by authors of Ionic, fixes keyboard issues on iOS
 install_plugin "android ios" vendor/plugins/ionic-plugins-keyboard || exit $?
