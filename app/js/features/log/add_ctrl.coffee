@@ -3,6 +3,8 @@ angular.module("logbuch")
 .controller "AddCtrl", ($scope, $state, Log, ToastrService, LocationService) ->
   $scope.log = new Log()
   $scope.log.type = _.last($state.current.url.split('/'))
+  $scope.tmp =
+    datetime: new Date()
 
   isTrack = $scope.log.type == 'track'
 
@@ -12,7 +14,7 @@ angular.module("logbuch")
       $scope.log.waypoints = [
         lat: position.latLng.lat
         long: position.latLng.lng
-        timestamp: moment().toISOString()
+        timestamp: moment($scope.tmp.datetime).toISOString()
       ]
       $scope.log.calculatePoints()
 

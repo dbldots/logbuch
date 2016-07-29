@@ -18,10 +18,11 @@
     "angulartics": "~0.17.2",
     "moment": "~2.10.3",
     "lodash": "~3.9.3",
-    "ngCordova": "~0.1.20-alpha",
+    "ngCordova": "0.1.27-alpha",
     "pdfmake": "~0.1.18",
     "leaflet": "~0.7.3",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "ion-datetime-picker": "~0.3.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.3"

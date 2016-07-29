@@ -25,8 +25,9 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
   getAccuratePosition: ->
     deferred = $q.defer()
     times = 5
-    runner = 0
+    runner = -1
     stack = []
+    limits = [50, 50, 75, 75, 100]
 
     error = ->
       deferred.reject()
@@ -45,7 +46,7 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
           deferred.resolve(latLng: bounds.getCenter())
 
       else
-        stack.push(position.latLng) if position.coords.accuracy <= 50
+        stack.push(position.latLng) if position.coords.accuracy <= limits[runner]
         $timeout run, 1500
 
     run = =>

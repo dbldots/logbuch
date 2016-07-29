@@ -174,6 +174,7 @@ module.exports = new class GulpConfig
           "assets/components/angular-sanitize/angular-sanitize.js"
           "assets/components/angular-ui-router/release/angular-ui-router.js"
           "assets/components/ionic/release/js/ionic-angular.js"
+          "assets/components/ion-datetime-picker/release/ion-datetime-picker.min.js"
 
           # Here add any vendor files that should be included in vendor.js
           # (f.e. bower components)

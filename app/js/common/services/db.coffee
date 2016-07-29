@@ -3,7 +3,7 @@ angular.module("logbuch")
 .factory "DBService", ($window, $q, $log) ->
   db: if window.cordova
     # mobile
-    window.sqlitePlugin.openDatabase("DB", "1.0", "database", -1)
+    window.sqlitePlugin.openDatabase(name: "DB", location: 'default')
   else
     # browser
     window.openDatabase("DB", "1.0", "database", -1)

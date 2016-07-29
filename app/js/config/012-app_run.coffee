@@ -8,7 +8,6 @@ ionic.Platform.ready ->
   angular.bootstrap document, [GLOBALS.ANGULAR_APP_NAME]
   L.Icon.Default.imagePath = 'components/leaflet/dist/images'
 
-
 app.run ($log, $timeout, $rootScope, Log, DebugLog) ->
   $log.debug "Ionic app \"#{GLOBALS.ANGULAR_APP_NAME}\" has just started (app.run)!" unless GLOBALS.ENV == "test"
 
