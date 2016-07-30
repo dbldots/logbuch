@@ -2,4 +2,27 @@ html
   body
     ion-view(view-title='Log Details', cache-view="false")
       ion-content.log-details(has-header='true', padding='true')
-        div(id='mapDetails', data-tap-disabled='true', style="width: 100%; height: 100%")
+        div(id='mapDetails', data-tap-disabled='true', style="width: 100%; height: 70%")
+
+        div.list
+          div.item.item-divider Datum, Punkte
+          div.item.item-stacked-label
+            span {{log.start.timestamp| datetime }}
+            span(ng-if='log.waypoints.length > 1')  - {{log.destination.timestamp| datetime }}
+            span.badge.badge-energized {{ log.points }}
+
+          div.item.item-divider Eingaben
+          label.item.item-input.item-stacked-label
+            span.input-label Gefahrene Strecke über Grund (km / nm)
+            input(type='number', ng-model='log.distance', placeholder='Distanz')
+
+          ion-radio(ng-model='log.type', value='inland') Binnen
+          ion-radio(ng-model='log.type', value='sea') See
+          ion-toggle(ng-model='log.engine') Motor
+          ion-toggle(ng-model='log.current') Strömung
+
+          label.item.item-input.item-stacked-label
+            span.input-label Notiz
+            input(type='text', ng-model='log.comment', placeholder='Notiz hier eingeben')
+
+          button.button.button-full.button-positive(ng-click='update()') Speichern

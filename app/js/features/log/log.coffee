@@ -61,9 +61,13 @@ angular.module("logbuch").factory "Log", (Model) ->
 
     @define 'distance',
       get: ->
-        @distance_nd
+        if @type == 'inland' then @distance_km else @distance_nm
 
       set: (value) ->
-        @distance_nd = value
-        @distance_km = parseFloat(value) if @type == 'inland'
-        @distance_nm = parseFloat(value) if @type == 'sea'
+        value = parseFloat(value)
+        if @type == 'inland'
+          @distance_km = parseFloat(value.toFixed(3))
+          @distance_nm = parseFloat((value / 1.852).toFixed(3))
+        if @type == 'sea'
+          @distance_nm = parseFloat(value.toFixed(3))
+          @distance_km = parseFloat((value * 1.852).toFixed(3))

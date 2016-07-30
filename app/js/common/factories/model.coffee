@@ -51,41 +51,49 @@ angular.module("logbuch").factory "Model", ($q, $log, DBService) ->
 
       deferred.promise
 
-    #@where: (query, values) ->
-
-    #@count: ->
-      #query   = "SELECT COUNT(*) AS count FROM #{@table}"
-      #values  = []
-
     @insert: (object) ->
       fields = []
       marks   = []
       values  = []
-      angular.forEach @columns, (column) ->
+      angular.forEach @columns, (column) =>
         return if column.name == 'id'
+        values.push @map(column, object[column.name])
         fields.push(column.name)
         marks.push('?')
-
-        value = object[column.name]
-
-        switch column.type
-          when 'text'
-            value ||= ''
-          when 'integer', 'real'
-            value ||= 0
-
-        switch column.map
-          when 'bool'
-            value = if value == true then 1 else 0
-          when 'json'
-            value = JSON.stringify(value)
-
-        values.push(value)
 
       query   = "INSERT INTO #{@table} (#{fields.join(',')}) VALUES (#{marks.join(',')})"
       values  = values
 
       DBService.query(query: query, values: values)
+
+    @update: (object) ->
+      updates = []
+      values  = []
+      angular.forEach @columns, (column) =>
+        return if column.name == 'id'
+
+        values.push @map(column, object[column.name])
+        updates.push "#{column.name} = ?"
+
+      query   = "UPDATE #{@table} SET #{updates.join(', ')} WHERE id = #{object.id}"
+      values  = values
+
+      DBService.query(query: query, values: values)
+
+    @map: (column, value) ->
+      switch column.type
+        when 'text'
+          value ||= ''
+        when 'integer', 'real'
+          value ||= 0
+
+      switch column.map
+        when 'bool'
+          value = if value == true then 1 else 0
+        when 'json'
+          value = JSON.stringify(value)
+
+      value
 
     @createTable: ->
       columns = []
@@ -107,6 +115,9 @@ angular.module("logbuch").factory "Model", ($q, $log, DBService) ->
 
     save: ->
       @constructor.insert(@)
+
+    update: ->
+      @constructor.update(@)
 
     destroy: ->
       query  = "DELETE FROM #{@constructor.table} WHERE id = ?"

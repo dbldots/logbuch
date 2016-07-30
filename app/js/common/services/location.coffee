@@ -27,7 +27,7 @@ angular.module("logbuch").factory "LocationService", ($rootScope, $q, $log, $tim
     times = 5
     runner = -1
     stack = []
-    limits = [50, 50, 75, 75, 100]
+    limits = [100, 80, 60, 40, 40]
 
     error = ->
       deferred.reject()

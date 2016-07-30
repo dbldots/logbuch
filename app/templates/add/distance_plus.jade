@@ -9,8 +9,8 @@ html
 
         div.list
           div.item.item-divider Datum, Punkte
-          div.item.item-icon-left.item-stacked-label(ion-datetime-picker='true', monday-first='true', ng-model='tmp.datetime')
-            i.icon.ion-ios-calendar.positive
+          div.item.item-icon-left.item-stacked-label(ion-datetime-picker='true', title='tmp.title', monday-first='true', ng-model='tmp.datetime')
+            i.icon.ion-ios-calendar-outline.positive
             {{tmp.datetime| datetime }}
             span.badge.badge-energized 10
 

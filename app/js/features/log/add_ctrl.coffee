@@ -5,6 +5,7 @@ angular.module("logbuch")
   $scope.log.type = _.last($state.current.url.split('/'))
   $scope.tmp =
     datetime: new Date()
+    title: "Wähle Datum und Uhrzeit"
 
   isTrack = $scope.log.type == 'track'
 

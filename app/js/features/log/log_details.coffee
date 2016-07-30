@@ -1,4 +1,4 @@
-angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log) ->
+angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $stateParams, $filter, $ionicHistory, Log, ToastrService) ->
   map = L.map('mapDetails')
 
   osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -24,3 +24,12 @@ angular.module("logbuch").controller "LogDetailsCtrl", ($scope, $state, $statePa
 
     bounds = L.latLngBounds(coords)
     map.fitBounds(bounds)
+
+    if $scope.log.isTrack()
+      calculate = -> $scope.log && $scope.log.calculatePoints()
+      $scope.$watch 'log' , calculate, true
+
+  $scope.update = ->
+    $scope.log.update().then ->
+      ToastrService.show('Änderungen gespeichert.')
+      $state.go('tab.log')

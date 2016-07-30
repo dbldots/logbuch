@@ -15,7 +15,7 @@ html
                       span.date {{ log.start.timestamp | datetime }}
                     td
                       span.coord {{ log.start.lat | dms_lat0 }}, {{ log.start.long | dms_long0 }}
-                  tr
+                  tr(ng-if='log.waypoints.length > 1')
                     td
                       span.date {{ log.destination.timestamp | datetime }}
                     td
